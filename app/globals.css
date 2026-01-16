@@ -155,3 +155,79 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* UTILITIES */
+
+@utility remove-scrollbar {
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: transparent;
+  }
+}
+
+@utility sidebar {
+  width: 100%;
+  max-width: 18rem;
+  overflow: auto;
+  padding: 2.5rem 1.75rem;
+}
+
+@utility container {
+  @apply relative flex-1 overflow-y-auto px-[5%];
+}
+
+@utility sub-container {
+  @apply mx-auto flex size-full flex-col py-10;
+}
+
+@utility text-36-bold {
+  @apply text-[36px] leading-10 font-bold;
+}
+
+@utility text-24-bold {
+  @apply text-[24px] leading-7 font-bold;
+}
+
+@utility text-32-bold {
+  @apply text-[32px] leading-9 font-bold;
+}
+
+@utility text-18-bold {
+  @apply text-[18px] leading-6 font-bold;
+}
+
+@utility text-16-semibold {
+  @apply text-[16px] leading-5 font-semibold;
+}
+
+@utility text-16-regular {
+  @apply text-[16px] leading-5 font-normal;
+}
+
+@utility text-14-medium {
+  @apply text-[14px] leading-4.5 font-medium;
+}
+
+@utility text-14-regular {
+  @apply text-[14px] leading-4.5 font-normal;
+}
+
+@utility text-12-regular {
+  @apply text-[12px] leading-4 font-normal;
+}
+
+@utility text-12-semibold {
+  @apply text-[12px] leading-4 font-semibold;
+}
