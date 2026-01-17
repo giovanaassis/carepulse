@@ -4,8 +4,8 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="flex h-screen max-h-screen">
-      <section className="remove-scrollbar container my-auto">
+    <div className="flex h-screen max-h-screen overflow-y-hidden">
+      <section className="container py-auto h-full overflow-y-auto">
         <div className="sub-container max-w-124">
           <Image
             src="/assets/icons/logo-full.svg"
@@ -17,9 +17,9 @@ export default function Home() {
 
           <PatientForm />
 
-          <div className="text-14-regular mt-20 flex justify-between">
+          <div className="text-14-regular mt-20 pb-10 flex justify-between">
             <p className="justify-items-end text-dark-600 xl:text-left">
-              © 2026 Carepulse
+              © 2026 CarePulse
             </p>
             <Link href="/?admin=true" className="text-green-500">
               Admin
