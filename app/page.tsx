@@ -2,7 +2,7 @@ import PatientForm from "@/components/forms/PatientForm";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Home() {
+export default function HomePage() {
   return (
     <div className="flex h-screen max-h-screen overflow-y-hidden">
       <section className="container py-auto h-full overflow-y-auto">
