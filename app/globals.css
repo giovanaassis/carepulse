@@ -154,27 +154,9 @@
   body {
     @apply bg-background text-foreground;
   }
-
-  /* REMINDER: ITS NOT WORKING */
-  .remove-scrollbar::-webkit-scrollbar {
-    width: 0;
-    height: 0;
-  }
-
-  .remove-scrollbar::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  .remove-scrollbar::-webkit-scrollbar-thumb {
-    background: transparent;
-  }
 }
 
 /* UTILITIES */
-
-@utility scroll-hidden {
-  -ms-overflow-style: none;
-}
 
 @utility sidebar {
   width: 100%;
