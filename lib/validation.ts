@@ -5,7 +5,7 @@ export const userFormSchema = z.object({
     .string()
     .min(5, "Username must be at least 5 characters.")
     .max(32, "Username must be at most 32 characters."),
-  email: z.email("Invalid email adress"),
+  email: z.email("Invalid email address"),
   phone: z
     .string()
     .refine(
