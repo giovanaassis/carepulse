@@ -2,17 +2,15 @@
 "use client";
 
 import { Control, Controller } from "react-hook-form";
-import {
-  Field,
-  FieldError,
-  FieldLabel,
-} from "@/components/ui/field";
+import { Field, FieldError, FieldLabel } from "@/components/ui/field";
 import { Input } from "./ui/input";
 import { FormFieldType } from "./forms/PatientForm";
 import React from "react";
 import Image from "next/image";
 import "react-phone-number-input/style.css";
 import PhoneInput, { type Value } from "react-phone-number-input";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 interface CustomFormFieldProps {
   control: Control<any>;
@@ -24,7 +22,7 @@ interface CustomFormFieldProps {
   iconAlt?: string;
   disabled?: boolean;
   dateFormat?: string;
-  showTimeSelect?: string;
+  showTimeSelect?: boolean;
   children?: React.ReactNode;
   renderSkeleton?: (field: any) => React.ReactNode;
 }
@@ -36,7 +34,15 @@ const RenderField = ({
   field: any;
   props: CustomFormFieldProps;
 }) => {
-  const { fieldType, iconSrc, iconAlt, placeholder } = props;
+  const {
+    fieldType,
+    iconSrc,
+    iconAlt,
+    placeholder,
+    showTimeSelect,
+    dateFormat,
+    renderSkeleton,
+  } = props;
 
   switch (fieldType) {
     case FormFieldType.INPUT:
@@ -70,14 +76,36 @@ const RenderField = ({
           className="input-phone!"
         />
       );
+    case FormFieldType.DATE_PICKER:
+      return (
+        <div className="flex rounded-md border border-dark-500 bg-dark-400">
+          <Image
+            src="/assets/icons/calendar.svg"
+            alt="calendar"
+            height={24}
+            width={24}
+            className="ml-2"
+          />
+          <DatePicker
+            selected={field.value}
+            onChange={(date: any) => field.onChange(date)}
+            dateFormat={dateFormat ?? "MM/dd/yyyy"}
+            showTimeSelect={showTimeSelect ?? false}
+            timeInputLabel="Time: "
+            wrapperClassName="date-picker"
+            placeholderText="DD/MM/YYYY"
+          />
+        </div>
+      );
+    case FormFieldType.SKELETON:
+      return renderSkeleton ? renderSkeleton(field) : null;
     default:
       break;
   }
 };
 
 function CustomFormField(props: CustomFormFieldProps) {
-  const { control, fieldType, name, label } =
-    props;
+  const { control, fieldType, name, label } = props;
 
   return (
     <Controller

@@ -1,8 +1,11 @@
 import RegisterForm from "@/components/forms/RegisterForm";
+import { getUser } from "@/lib/actions/patient.actions";
 import Image from "next/image";
 import Link from "next/link";
 
-function RegisterPage() {
+async function RegisterPage({ params: { userId } }: SearchParamProps) {
+  const user = await getUser(userId);
+
   return (
     <div className="flex h-screen max-h-screen overflow-y-hidden">
       <section className="container py-auto h-full overflow-y-auto">
@@ -15,7 +18,7 @@ function RegisterPage() {
             className="mb-12 h-10 w-fit"
           />
 
-          <RegisterForm />
+          <RegisterForm user={user} />
 
           <div className="text-14-regular mt-20 pb-10 flex justify-between">
             <p className="justify-items-end text-dark-600 xl:text-left">
