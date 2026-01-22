@@ -289,6 +289,33 @@ function RegisterForm({ user }: { user: User }) {
             />
           </FieldGroup>
 
+          <section className="space-y-6 mt-9">
+            <div className="mb-9 space-y-1">
+              <h2 className="sub-header">Consent and Privacy</h2>
+            </div>
+          </section>
+
+          <CustomFormField
+            fieldType={FormFieldType.CHECKBOX}
+            control={form.control}
+            name="treatmentConsent"
+            label="I consent to receive treatment for my health condition"
+          />
+
+          <CustomFormField
+            fieldType={FormFieldType.CHECKBOX}
+            control={form.control}
+            name="disclosureConsent"
+            label="I consent to the use and disclosure of my health information for treatment purposes"
+          />
+
+          <CustomFormField
+            fieldType={FormFieldType.CHECKBOX}
+            control={form.control}
+            name="privacyConsent"
+            label="I acknowledge that I have reviewd and agree to the privacy policy"
+          />
+
           <Field orientation="horizontal">
             <SubmitButton isLoading={isLoading}>Get Started</SubmitButton>
           </Field>
