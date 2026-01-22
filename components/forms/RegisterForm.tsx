@@ -12,10 +12,11 @@ import { useRouter } from "next/navigation";
 import { createUser } from "@/lib/actions/patient.actions";
 import { FormFieldType } from "./PatientForm";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
-import { Doctors, GenderOptions } from "@/constants";
+import { Doctors, GenderOptions, IdentificationTypes } from "@/constants";
 import { Label } from "../ui/label";
 import { SelectItem } from "../ui/select";
 import Image from "next/image";
+import FileUploader from "../FileUploader";
 
 function RegisterForm({ user }: { user: User }) {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -246,6 +247,46 @@ function RegisterForm({ user }: { user: User }) {
                 placeholder="Asma, Appendectomy"
               />
             </div>
+          </FieldGroup>
+
+          <section className="space-y-6 mt-9">
+            <div className="mb-9 space-y-1">
+              <h2 className="sub-header">Identification and Verification</h2>
+            </div>
+          </section>
+
+          <FieldGroup>
+            <CustomFormField
+              control={form.control}
+              fieldType={FormFieldType.SELECT}
+              name="identificationType"
+              label="Identification Type"
+              placeholder="Select a identification type"
+            >
+              {IdentificationTypes.map((type) => (
+                <SelectItem key={type} value={type}>
+                  {type}
+                </SelectItem>
+              ))}
+            </CustomFormField>
+
+            <CustomFormField
+              control={form.control}
+              fieldType={FormFieldType.INPUT}
+              name="identificationNumber"
+              label="Identification Number"
+              placeholder="123456789"
+            />
+
+            <CustomFormField
+              control={form.control}
+              fieldType={FormFieldType.SKELETON}
+              name="identificationDocument"
+              label="Scanned Copy of Identification Document"
+              renderSkeleton={(field) => (
+                <FileUploader files={field.value} onChange={field.onChange} />
+              )}
+            />
           </FieldGroup>
 
           <Field orientation="horizontal">
