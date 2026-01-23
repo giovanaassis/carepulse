@@ -241,6 +241,19 @@
   @apply cursor-pointer text-sm font-medium text-dark-700 peer-disabled:cursor-not-allowed peer-disabled:opacity-70 md:leading-none;
 }
 
+@utility remove-scrollbar {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  -ms-overflow-style: none; /* IE / Edge antigo */
+  scrollbar-width: none; /* Firefox */
+}
+
+@utility copyright {
+  @apply text-14-regular justify-items-end text-center text-dark-600 xl:text-left;
+}
+
 /* SHADCN OVERRIDES */
 
 @utility shad-input {

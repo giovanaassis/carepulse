@@ -2,8 +2,18 @@
 "use server";
 
 import { Query, ID } from "node-appwrite";
-import { users } from "../appwrite.config";
+import {
+  BUCKET_ID,
+  DATABASE_ID,
+  ENDPOINT,
+  PATIENT_TABLE_ID,
+  PROJECT_ID,
+  storage,
+  tables,
+  users,
+} from "../appwrite.config";
 import { parseStringify } from "../utils";
+import { InputFile } from "node-appwrite/file";
 
 export const createUser = async (user: CreateUserParams) => {
   try {
@@ -33,6 +43,43 @@ export const getUser = async (userId: string) => {
     const user = await users.get({ userId });
 
     return parseStringify(user);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const registerPatient = async ({
+  identificationDocument,
+  ...patient
+}: RegisterUserParams) => {
+  try {
+    let file;
+
+    if (identificationDocument) {
+      const inputFile = InputFile.fromBuffer(
+        identificationDocument.get("blobFile") as Blob,
+        identificationDocument.get("fileName") as string
+      );
+
+      file = await storage.createFile({
+        bucketId: BUCKET_ID!,
+        fileId: ID.unique(),
+        file: inputFile,
+      });
+    }
+
+    const newPatient = await tables.createRow({
+      databaseId: DATABASE_ID!,
+      tableId: PATIENT_TABLE_ID!,
+      rowId: ID.unique(),
+      data: {
+        identificationDocumentId: file?.$id || null,
+        identificationDocumentUrl: `${ENDPOINT}/storage/buckets/${BUCKET_ID}/files/${file?.$id}/view?project=${PROJECT_ID}`,
+        ...patient,
+      },
+    });
+
+    return parseStringify(newPatient);
   } catch (error) {
     console.log(error);
   }

@@ -1,15 +1,19 @@
 import RegisterForm from "@/components/forms/RegisterForm";
 import { getUser } from "@/lib/actions/patient.actions";
 import Image from "next/image";
-import Link from "next/link";
 
-async function RegisterPage({ params: { userId } }: SearchParamProps) {
+async function RegisterPage({
+  params,
+}: {
+  params: Promise<{ userId: string }>;
+}) {
+  const { userId } = await params;
   const user = await getUser(userId);
 
   return (
     <div className="flex h-screen max-h-screen overflow-y-hidden">
-      <section className="container py-auto h-full overflow-y-auto">
-        <div className="sub-container max-w-124">
+      <section className="container h-full remove-scrollbar">
+        <div className="sub-container max-w-215 flex-1 flex-col py-10">
           <Image
             src="/assets/icons/logo-full.svg"
             alt="patient"
@@ -19,15 +23,7 @@ async function RegisterPage({ params: { userId } }: SearchParamProps) {
           />
 
           <RegisterForm user={user} />
-
-          <div className="text-14-regular mt-20 pb-10 flex justify-between">
-            <p className="justify-items-end text-dark-600 xl:text-left">
-              © 2026 CarePulse
-            </p>
-            <Link href="/?admin=true" className="text-green-500">
-              Admin
-            </Link>
-          </div>
+          <p className="copyright! py-12">© 2026 CarePulse</p>
         </div>
       </section>
       <Image
