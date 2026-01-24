@@ -84,3 +84,17 @@ export const registerPatient = async ({
     console.log(error);
   }
 };
+
+export const getPatient = async (userId: string) => {
+  try {
+    const patients = await tables.listRows({
+      databaseId: DATABASE_ID!,
+      tableId: PATIENT_TABLE_ID!,
+      queries: [Query.equal("userId", userId)],
+    });
+
+    return parseStringify(patients.rows[0]);
+  } catch (error) {
+    console.log(error);
+  }
+};
