@@ -32,7 +32,7 @@ function AppointmentForm({ type, userId, patientId }: AppointmentFormProps) {
     defaultValues: {
       primaryPhysician: "",
       schedule: new Date(),
-      reason: "/",
+      reason: "",
       note: "",
       cancellationReason: "",
     },
