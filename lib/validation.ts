@@ -56,26 +56,20 @@ export const PatientFormValidation = z.object({
   identificationType: z.string().optional(),
   identificationNumber: z.string().optional(),
   identificationDocument: z.array(z.instanceof(File)).optional(),
-  treatmentConsent: z
-    .boolean()
-    .refine((value) => value === true, {
-      message: "You must consent to treatment in order to proceed",
-    }),
-  disclosureConsent: z
-    .boolean()
-    .refine((value) => value === true, {
-      message: "You must consent to disclosure in order to proceed",
-    }),
-  privacyConsent: z
-    .boolean()
-    .refine((value) => value === true, {
-      message: "You must consent to privacy in order to proceed",
-    }),
+  treatmentConsent: z.boolean().refine((value) => value === true, {
+    message: "You must consent to treatment in order to proceed",
+  }),
+  disclosureConsent: z.boolean().refine((value) => value === true, {
+    message: "You must consent to disclosure in order to proceed",
+  }),
+  privacyConsent: z.boolean().refine((value) => value === true, {
+    message: "You must consent to privacy in order to proceed",
+  }),
 });
 
 export const CreateAppointmentSchema = z.object({
   primaryPhysician: z.string().min(2, "Select at least one doctor"),
-  schedule: z.coerce.date(),
+  schedule: z.date(),
   reason: z
     .string()
     .min(2, "Reason must be at least 2 characters")
@@ -86,7 +80,7 @@ export const CreateAppointmentSchema = z.object({
 
 export const ScheduleAppointmentSchema = z.object({
   primaryPhysician: z.string().min(2, "Select at least one doctor"),
-  schedule: z.coerce.date(),
+  schedule: z.date(),
   reason: z.string().optional(),
   note: z.string().optional(),
   cancellationReason: z.string().optional(),
@@ -94,7 +88,7 @@ export const ScheduleAppointmentSchema = z.object({
 
 export const CancelAppointmentSchema = z.object({
   primaryPhysician: z.string().min(2, "Select at least one doctor"),
-  schedule: z.coerce.date(),
+  schedule: z.date(),
   reason: z.string().optional(),
   note: z.string().optional(),
   cancellationReason: z
