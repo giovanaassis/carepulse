@@ -1,10 +1,19 @@
 import PatientForm from "@/components/forms/PatientForm";
+import PasskeyModal from "@/components/PasskeyModal";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function HomePage() {
+export default async function HomePage({
+  searchParams,
+}: {
+  searchParams: Promise<{ admin: string }>;
+}) {
+  const isAdmin = (await searchParams).admin === "true";
+
   return (
     <div className="flex h-screen max-h-screen overflow-y-hidden">
+      {isAdmin && <PasskeyModal />}
+
       <section className="container py-auto h-full overflow-y-auto">
         <div className="sub-container max-w-124">
           <Image

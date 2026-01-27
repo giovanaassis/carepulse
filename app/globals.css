@@ -288,6 +288,18 @@
   @apply bg-red-700 text-white;
 }
 
+.shad-alert-dialog {
+  @apply space-y-5 bg-dark-400 border-dark-500 outline-none;
+}
+
+.shad-otp {
+  @apply w-full flex justify-between;
+}
+
+.shad-otp-slot {
+  @apply text-36-bold justify-center flex border border-dark-500 rounded-lg size-16 gap-4;
+}
+
 /* REACT PHONE NUMBER INPUT OVERRIDES */
 
 .PhoneInputInput {
