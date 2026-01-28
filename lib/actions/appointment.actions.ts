@@ -4,6 +4,7 @@ import { ID, Query } from "node-appwrite";
 import { APPOINTMENT_TABLE_ID, DATABASE_ID, tables } from "../appwrite.config";
 import { parseStringify } from "../utils";
 import { Appointment } from "@/types/appwrite.types";
+import { revalidatePath } from "next/cache";
 
 export const createAppointment = async (
   appointment: CreateAppointmentParams
@@ -41,7 +42,10 @@ export const getRecentAppointmentList = async () => {
     const appointments = await tables.listRows({
       databaseId: DATABASE_ID!,
       tableId: APPOINTMENT_TABLE_ID!,
-      queries: [Query.orderDesc("$createdAt")],
+      queries: [
+        Query.orderDesc("$createdAt"),
+        Query.select(["*", "patient.name"]),
+      ],
     });
 
     const initialCounts = {
@@ -72,6 +76,31 @@ export const getRecentAppointmentList = async () => {
     };
 
     return parseStringify(data);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const updateAppointment = async ({
+  appointment,
+  appointmentId,
+  userId,
+  type,
+}: UpdateAppointmentParams) => {
+  try {
+    const updatedAppointment = await tables.updateRow({
+      databaseId: DATABASE_ID!,
+      tableId: APPOINTMENT_TABLE_ID!,
+      rowId: appointmentId,
+      data: appointment,
+    });
+
+    if (!updatedAppointment) {
+      throw new Error("Appointment not found");
+    }
+
+    revalidatePath("/admin");
+    return parseStringify(updatedAppointment);
   } catch (error) {
     console.log(error);
   }
