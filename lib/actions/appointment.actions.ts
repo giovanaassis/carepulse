@@ -88,6 +88,7 @@ export const updateAppointment = async ({
   type,
 }: UpdateAppointmentParams) => {
   try {
+    console.log(userId, type);
     const updatedAppointment = await tables.updateRow({
       databaseId: DATABASE_ID!,
       tableId: APPOINTMENT_TABLE_ID!,

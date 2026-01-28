@@ -90,7 +90,11 @@ const RenderField = ({
             className="ml-2"
           />
           <DatePicker
-            selected={field.value}
+            selected={
+              field.value instanceof Date && !isNaN(field.value.getTime())
+                ? field.value
+                : null
+            }
             onChange={(date: any) => field.onChange(date)}
             dateFormat={dateFormat ?? "MM/dd/yyyy"}
             showTimeSelect={showTimeSelect ?? false}

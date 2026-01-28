@@ -25,7 +25,7 @@ interface AppointmentFormProps {
   userId: string;
   patientId: string;
   appointment?: Appointment;
-  setOpen: (open: boolean) => void;
+  setOpen?: (open: boolean) => void;
 }
 
 function AppointmentForm({

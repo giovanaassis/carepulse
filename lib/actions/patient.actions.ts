@@ -24,7 +24,6 @@ export const createUser = async (user: CreateUserParams) => {
       password: undefined,
       name: user.name,
     });
-    console.log(newUser);
 
     return parseStringify(newUser);
   } catch (error: any) {
