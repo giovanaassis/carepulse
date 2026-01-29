@@ -14,7 +14,7 @@ export default async function HomePage({
     <div className="flex h-screen max-h-screen overflow-y-hidden">
       {isAdmin && <PasskeyModal />}
 
-      <section className="container py-auto h-full overflow-y-auto">
+      <section className="my-container h-full remove-scrollbar">
         <div className="sub-container max-w-124">
           <Image
             src="/assets/icons/logo-full.svg"

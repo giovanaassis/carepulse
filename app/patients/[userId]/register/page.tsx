@@ -12,7 +12,7 @@ async function RegisterPage({
 
   return (
     <div className="flex h-screen max-h-screen overflow-y-hidden">
-      <section className="container h-full remove-scrollbar">
+      <section className="my-container h-full remove-scrollbar">
         <div className="sub-container max-w-215 flex-1 flex-col py-10">
           <Image
             src="/assets/icons/logo-full.svg"

@@ -12,7 +12,7 @@ async function NewAppointmentPage({
 
   return (
     <div className="flex h-screen max-h-screen overflow-y-hidden">
-      <section className="container py-auto h-full overflow-y-auto remove-scrollbar">
+      <section className="my-container py-auto h-full remove-scrollbar">
         <div className="sub-container max-w-215 flex-1 justify-between">
           <Image
             src="/assets/icons/logo-full.svg"
