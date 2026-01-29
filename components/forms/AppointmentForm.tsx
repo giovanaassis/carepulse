@@ -78,6 +78,7 @@ function AppointmentForm({
           note: values.note,
           status: status as Status,
         };
+
         const appointment = await createAppointment(appointmentData);
 
         if (appointment) {
@@ -186,8 +187,8 @@ function AppointmentForm({
                   <CustomFormField
                     fieldType={FormFieldType.TEXTAREA}
                     control={form.control}
-                    name="notes"
-                    label="Notes"
+                    name="note"
+                    label="Note"
                     placeholder="Enter notes"
                   />
                 </div>
