@@ -160,7 +160,7 @@ function CustomFormField(props: CustomFormFieldProps) {
           <RenderField field={field} props={props} />
 
           {fieldState.invalid && (
-            <FieldError errors={[fieldState.error]} className="shad-error" />
+            <FieldError errors={[fieldState.error]} className="text-red-400" />
           )}
         </Field>
       )}
