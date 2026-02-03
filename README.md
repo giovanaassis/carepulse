@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CarePulse
 
-## Getting Started
+> Healthcare management system built with Next.js that allows patient registration, medical appointment scheduling, and full management of this information through an admin dashboard.
 
-First, run the development server:
+<img src="public/assets/images/project-print-homepage.png" alt="main-page-image">
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+<img src="public/assets/images/project-print-admin.png" alt="admin-page-image">
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🚀 Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Appointment scheduling and cancellation  
+- Admin dashboard with appointment history  
+- Authentication with verification passkey  
+- SMS notification sending  
+- Form validation  
+- Clean and responsive interface  
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🛠️ Tech Stack
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Next.js  
+- TypeScript  
+- Appwrite  
+- React Hook Form + Zod  
+- Tailwind CSS  
+- Shadcn UI  
+- Twilio  
+- Sentry  
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+### 👩‍💻 Developed by
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+[Giovana de Assis](https://github.com/giovanaassis)  
+Front-End Developer  
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
