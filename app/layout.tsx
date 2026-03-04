@@ -13,6 +13,30 @@ const fontSans = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   title: "CarePulse",
   description: "A healthcare management system",
+  keywords: [
+    "medical appointment scheduling",
+    "book medical appointment online",
+    "schedule doctor appointment",
+    "online doctor booking",
+    "medical appointment booking system",
+    "healthcare appointment platform",
+    "clinic appointment scheduling",
+  ],
+  openGraph: {
+    title: "Carepulse",
+    description:
+      "A healthcare management system. Schedule your doctor appointment easily.",
+    type: "website",
+    url: "https://carepulse-orpin.vercel.app",
+    images: [
+      {
+        url: "https://carepulse-orpin.vercel.app/assets/images/project-print-homepage.png",
+      },
+    ],
+  },
+  alternates: {
+    canonical: "https://carepulse-orpin.vercel.app",
+  },
 };
 
 export default function RootLayout({
@@ -25,7 +49,7 @@ export default function RootLayout({
       <body
         className={cn(
           "min-h-screen bg-dark-300 font-sans antialiased",
-          fontSans.variable
+          fontSans.variable,
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="dark">
