@@ -76,7 +76,7 @@ const RenderField = ({
           withCountryCallingCode
           value={field.value as Value | undefined}
           onChange={field.onChange}
-          className="input-phone!"
+          className="input-phone w-full"
         />
       );
     case FormFieldType.DATE_PICKER:
@@ -152,7 +152,10 @@ function CustomFormField(props: CustomFormFieldProps) {
       name={name}
       control={control}
       render={({ field, fieldState }) => (
-        <Field data-invalid={fieldState.invalid} className="flex-1">
+        <Field
+          data-invalid={fieldState.invalid}
+          className="w-full"
+        >
           {fieldType !== FormFieldType.CHECKBOX && label && (
             <FieldLabel htmlFor={name}>{label}</FieldLabel>
           )}

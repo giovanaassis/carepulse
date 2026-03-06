@@ -200,7 +200,7 @@
 }
 
 .shad-otp {
-  @apply w-full flex justify-between;
+  @apply w-[90%] md:w-full flex justify-between;
 }
 
 .shad-otp-slot {

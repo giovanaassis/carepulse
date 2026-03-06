@@ -66,11 +66,11 @@ function PasskeyModal() {
   return (
     <AlertDialog open={open} onOpenChange={setOpen}>
       <AlertDialogContent className="shad-alert-dialog">
-        <AlertDialogHeader>
+        <AlertDialogHeader className="w-[90%] md:w-full">
           <AlertDialogTitle className="flex w-full items-start justify-between">
-            Admin Access Verification
+            <p>Admin Access Verification</p>
             <Image
-              src="assets/icons/close.svg"
+              src="/assets/icons/close.svg"
               alt="close"
               width={20}
               height={20}
@@ -78,6 +78,7 @@ function PasskeyModal() {
               className="cursor-pointer"
             />
           </AlertDialogTitle>
+
           <AlertDialogDescription>
             To access the admin page, please enter the passkey.
           </AlertDialogDescription>
@@ -107,7 +108,7 @@ function PasskeyModal() {
         </div>
         <AlertDialogFooter>
           <AlertDialogAction
-            className="shad-primary-btn! w-full"
+            className="shad-primary-btn! w-[90%] md:w-full"
             onClick={(e) => validateKey(e)}
           >
             Enter Admin Passkey
