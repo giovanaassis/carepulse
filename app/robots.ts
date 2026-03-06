@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/admin',
     },
-    // sitemap: 'https://acme.com/sitemap.xml',
+    sitemap: 'https://carepulse-orpin.vercel.app/sitemap.xml',
   }
 }
